@@ -1,0 +1,16 @@
+version: "3"
+services:
+  icoding-java:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: icoding-java-img
+    depends_on:
+      - redis
+    ports:
+      - "8000:8080"
+  redis:
+    image: redis:alpine
+    volumes:
+      - "/opt/redis:/etc/redis"
+    command: redis-server /etc/redis/redis.conf

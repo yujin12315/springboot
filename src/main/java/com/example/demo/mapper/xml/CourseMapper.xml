@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CourseMapper">
+    <!--mp没有的方法,我们自己新增即可-->
+    <select id="getList" resultType="com.example.demo.entity.Drools">
+
+        SELECT srt.rule rule
+        FROM drl_tbl drl,
+        single_rule_tbl srt
+        WHERE
+        drl.rule_id = srt.rule_id
+        and drl_id= #{drlId}
+
+        ORDER BY to_number(srt.order)
+    </select>
+
+
+    <select id="getInfo" resultType="java.lang.String">
+
+<!--        SELECT dt.*-->
+<!--        FROM drl_tbl dt-->
+        SELECT srt.rule rule
+        FROM drl_tbl drl,single_rule_tbl srt
+        WHERE drl.rule_id=srt.rule_id
+        and drl_id=#{drlId}
+
+    </select>
+
+
+</mapper>

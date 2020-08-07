@@ -1,0 +1,10 @@
+package com.sample
+import java.util.Map;
+dialect "java"
+rule "death_day-rule"
+when
+$map:Map() 
+Map((this["insurance_start_date"]<=this["death_day"])||this["insurance_end_date"]>=this["death_day"])
+then
+((Map)$map.get("resultMap")).put("death_day","OK");
+end
